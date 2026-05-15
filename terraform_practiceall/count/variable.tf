@@ -10,10 +10,19 @@ variable "instance_type" {
      default = "t3.micro"
 }
 
+variable "zone_id" {
+
+      type = string
+      default = "Z05454352LP47ZQWSG7WJ"
+}
+
+variable "domian_name"{
+     default = "dsecops88.online"
+}
 variable "tags"{
 
       type = list(string)
-      default = ["catelog","user","frontend"]
+      default = ["mongodb", "redis", "mysql", "rabbitmq", "catalogue", "user", "cart", "shipping", "payment", "frontend"]
 }
 
 variable "sg_name"{
@@ -56,4 +65,14 @@ variable "sg_tags" {
      default = {
         Name = "allow-all-terraform"
      }
+}
+
+variable "fruits"{
+     type = list(string)
+     default =["apple","banana","apple","graps"]
+}
+
+variable "fruits_set"{
+     type = set(string)
+     default =["apple","banana","apple","graps"]
 }
