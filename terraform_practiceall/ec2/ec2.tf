@@ -1,6 +1,6 @@
-resourse "aws_instance" "example" {
+resource "aws_instance" "example" {
 
-       aws = "ami-0220d79f3f480ecf5"
+       ami = "ami-0220d79f3f480ecf5"
        instance_type = "t3.micro"
 
     tags = {
