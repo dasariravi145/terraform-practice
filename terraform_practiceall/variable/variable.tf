@@ -21,7 +21,7 @@ variable "tags"{
 
 variable "sg_name"{
      type = string
-     default = "allow_all_roboshop"
+     default = "allow_all_roboshop_default"
 }
 variable "sg_description" {
 
