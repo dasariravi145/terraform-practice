@@ -4,13 +4,13 @@ variable "ami"{
      default = "ami-0220d79f3f480ecf5"
 }
 
-varaible "instance_type" {
+variable "instance_type" {
 
      type = string
      default = "t3.micro"
 }
 
-varaible "tags"{
+variable "tags"{
 
       type = map(string)
       default = {
@@ -23,37 +23,37 @@ variable "sg_name"{
      type = string
      default = "allow_all_roboshop"
 }
-varaible "sg_description" {
+variable "sg_description" {
 
      type = string
      default = "Allow TLS inbound traffic and all outbound traffic"
 }
 
-varaible "from_port" {
+variable "from_port" {
 
      type = number
      default = 0
 }
 
-varaible "to_port" {
+variable "to_port" {
 
       type = number
       default = 0
 }
 
-varaible "cidr_blocks" {
+variable "cidr_blocks" {
 
      type = list(string)
      default = ["0.0.0.0/0"]
 }
 
-varaible "ipv6_cidr_blocks" {
+variable "ipv6_cidr_blocks" {
 
      type = list(string)
      default = ["::/0"]
 }
 
-varaible "sg_tags" {
+variable "sg_tags" {
 
      type = map(string)
      default = {
