@@ -9,6 +9,7 @@ resource "aws_instance" "example"{
           Name = var.tags[count.index]
           Project = "roboshop"
       }
+}
 
 resource "aws_security_group" "allow_tls"{
 
