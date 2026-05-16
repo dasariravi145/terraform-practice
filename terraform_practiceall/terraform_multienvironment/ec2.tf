@@ -1,17 +1,17 @@
 resource "aws_instance" "example" {
 
-       ami = "ami-0220d79f3f480ecf5"
-       instance_type = "t3.micro"
+       ami = local.ami_id
+       instance_type = lookup(var.instance_type, local.environment)
 
     tags = {
-       Name = "terraform-state"
+       Name = "${var.project}-${local.environment}"
        project ="roboshop"
   }
 }
 
 resource  "aws_security_group" "allow_tls" {
 
-      name = "allow-all-roboshop"
+      name = "allow-all-roboshop-${local.environment}"
       description = "Allow TLS inbound traffic and all outbound traffic"
 
       ingress {
