@@ -1,12 +1,9 @@
 resource "aws_instance" "example" {
 
-       ami = "ami-0220d79f3f480ecf5"
+       ami = local.ami_id
        instance_type = "t3.micro"
 
-    tags = {
-       Name = "terraform-state"
-       project ="roboshop"
-  }
+    tags = local.ec2_finaltags
 }
 
 resource  "aws_security_group" "allow_tls" {
@@ -30,8 +27,6 @@ resource  "aws_security_group" "allow_tls" {
             ipv6_cidr_blocks = ["::/0"]
    }
 
-   tags = {
-    Name = "allow-all-terraform"
-  }
+   tags = local.sg_finaltags
 
 } 
