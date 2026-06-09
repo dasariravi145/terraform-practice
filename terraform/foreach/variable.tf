@@ -1,8 +1,8 @@
 variable "tags" {
-      type = map(string)
+      type = map
       default = {
 
-           Name = ["catalogue","user","frontend"]
-           Project = "roboshop"
+            "catalogue" = "roboshop"
+           
       }
 }

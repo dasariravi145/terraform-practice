@@ -4,8 +4,9 @@ resource "aws_instance" "example"{
       instance_type = "t3.micro"
 
     tags= {
+
          Name = each.key
-         project = each.value
+         Project = each.value
     }
 
 }
