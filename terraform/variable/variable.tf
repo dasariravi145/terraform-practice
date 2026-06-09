@@ -1,12 +1,12 @@
 variable "instance_type"{
 
       type = string
-      default = "t3.micro"
+      default = "t3.small"
 }
 
 variable "ami_id" {
 
-        type = String
+        type = string
         default = "ami-0220d79f3f480ecf5"
 }
 
@@ -46,7 +46,7 @@ variable  "to_port" {
 variable "protocol" {
 
     type = string
-    degault = "-1"
+    default = "-1"
 }
 
 variable "cidr_blocks"{

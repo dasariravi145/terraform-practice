@@ -1,8 +1,8 @@
-resource "aws_instace" "example"{
+resource "aws_instance" "example"{
 
         ami = var.ami_id
-        instace_type= var.instance_type
-        vpc_security_group_ids = var.aws_security_group
+        instance_type= var.instance_type 
+        vpc_security_group_ids = var.vpc_security_group_ids
 
     tags = var.tags
 }
