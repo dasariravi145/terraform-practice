@@ -15,7 +15,7 @@ resource "aws_security_group" "allow_tls"{
       name = "allow-all-roboshop"
       description = "Allow TLS inbound traffic and all outbound traffic"
 
-    engress {
+    ingress {
 
             from_port        = 0
             to_port          = 0
@@ -25,7 +25,7 @@ resource "aws_security_group" "allow_tls"{
 
     }
 
-    ingress {
+    egress {
 
             from_port        = 0
             to_port          = 0
