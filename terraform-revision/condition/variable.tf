@@ -1,4 +1,9 @@
-variable "instance_type" {
+variable "environment" {
         type = string
-        default = "t3.micro"
+        default = "prod"
+}
+
+variable "fruits"{
+     type = list(string)
+     default =["apple","banana","apple","graps"]
 }
