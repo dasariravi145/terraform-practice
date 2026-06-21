@@ -6,14 +6,14 @@ resource "aws_instance" "example" {
 
     tags = {
 
-            Name = "terraform"
+            Name = "remote-terraform"
             Project= "roboshop"
     }
 }
 
 resource "aws_security_group" "allow_tls" {
 
-        name        = "allow_tls"
+        name        = "allow_tls-remote"
         description = "Allow TLS inbound traffic and all outbound traffic"
 
    
