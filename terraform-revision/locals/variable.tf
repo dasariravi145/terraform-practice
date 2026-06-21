@@ -1,17 +1,14 @@
 variable "ec2_tags" {
 
-     type = string
-     default = "roboshop"
+     default = {
+
+          Name = "function-demo"
+     }
 }
 
-variable "environment" {
+variable "sg_tags" {
+      default = {
 
-      type = string
-      default = "dev"
-}
-
-variable "final_tags" {
-
-      type = string
-      default = "${var.ec2_tags}.${var.environment}"
+           Name = "functions-demo"
+      }
 }
