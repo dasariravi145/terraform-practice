@@ -7,8 +7,33 @@ resource "aws_instance" "example" {
 
      provisioner "local-exec" {
           
-          command = "echo  ${self.private_ip}" > inventory.in
+          command = "echo  ${self.private_ip} >> inventory.in"
      }
+     provisioner "local-exec" {
+
+           command = "echo script1"
+     }
+
+     connection {
+          type     = "ssh"
+          user     = "ec2-user"
+          password = "DevOps321"
+          host     = self.public_ip
+     }
+    provisioner "remote-exec" {
+    inline = [
+     
+         "sudo yum install nginx -y",
+         "sudo systemctl enable nginx",
+         "sudo systemctl restart nginx"
+        ]
+     }
+
+     provisioner "local-exec" {
+          when = destroy
+           command = "echo 'Destroy infra'"
+     }
+
     tags = {
 
             Name = "terraform"
