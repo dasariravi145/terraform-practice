@@ -21,8 +21,10 @@ variable "instace_tags" {
 }
 
 variable "sg_name" {
+      
+      type= string
 
-      default = "allow_tls"
+      default = "allow_tls_default"
 }
 
 variable "sg_description"{
@@ -38,6 +40,6 @@ variable "sg_tags" {
 
       type = map(string)
       default = {
-            Name = "terraform"
+            Name = "default varaible"
       }
 }
