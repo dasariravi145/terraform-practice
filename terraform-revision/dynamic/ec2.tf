@@ -11,31 +11,33 @@ resource "aws_instance" "example" {
     }
 }
 
-resource "aws_security_group" "allow_tls" {
+resource  "aws_security_group" "allow_tls" {
 
-        name        = "allow_tls"
-        description = "Allow TLS inbound traffic and all outbound traffic"
+      name = "allow-all-roboshop"
+      description = "Allow TLS inbound traffic and all outbound traffic"
 
-   
-   dynamic "ingress" {
+      egress {
+            from_port        = 0
+            to_port          = 0
+            protocol         = "-1"
+            cidr_blocks      = ["0.0.0.0/0"]
+            ipv6_cidr_blocks = ["::/0"]
+      }
+
+      dynamic "ingress" {
         for_each = var.ingress_rules
-        from_port        = ingress.value.port
-        to_port          = ingress.value.port
-        protocol         = "tcp"
-        cidr_blocks      = ingress.value.cidr_blocks
-        description      = ingress.value.description
-   }
-    egress {
-
-        from_port        = 0
-        to_port          = 0
-        protocol         = "-1"
-        cidr_blocks      = ["0.0.0.0/0"]
-        ipv6_cidr_blocks = ["::/0"]
-   }
+        content {
+            from_port        = ingress.value.port
+            to_port          = ingress.value.port
+            protocol         = "tcp"
+            cidr_blocks      = ingress.value.cidr_blocks
+            description      = ingress.value.description
+        }
+            
+      }
 
    tags = {
-          Name = "allow-all-terraform"
-   }
+    Name = "allow-all-terraform"
+  }
 
-}
+} 
