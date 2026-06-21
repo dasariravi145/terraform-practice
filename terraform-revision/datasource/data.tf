@@ -1,22 +1,26 @@
 data "aws_ami" "joindevops" {
+  most_recent = true
+  owners      = ["973714476881"]
 
-       most_recent = true
-       owners = ["973714476881"] 
+  filter {
+    name   = "name"
+    # Added a trailing wildcard (*) to catch full names like Redhat-9-DevOps-Practice-v1
+    values = ["Redhat-9-DevOps-Practice*"] 
+  }
 
-    filter {
+  filter {
+    name   = "root-device-type"
+    # Fixed from "abs" to "ebs"
+    values = ["ebs"] 
+  }
 
-           name = "name"
-           values = ["Redhat-9-DevOps-Practice"]
-    }
-    filter {
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
 
-         name = "root-device-type"
-         values = ["abs"]
-    }
+data "aws_instance" "terraform_instance" {
 
-    filter {
-          name = "virtualization-type"
-          values = ["hvm"]
-    }
-
+       instance_id = "i-0d7128a2b5009a36e"
 }
