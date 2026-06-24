@@ -1,5 +1,7 @@
 module "vpc" {
 
-     source = "../terraform-aws-instance"
+     source = "../terraform-aws-vpc"
+     project = "roboshop"
+     environment = "dev"
     
 }
