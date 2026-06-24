@@ -7,17 +7,23 @@ locals {
             Terraform = "true"
      }
 
-     vpc_finaltags= merge(
-        var.common_tags,
+     vpc_aws_finaltags= merge(
+        
+        local.common_tags,
         {
-            Name = "{var.project}-{var.environment}"
+            Name = "${var.project}-${var.environment}"
         },
         var.vpc_tags
     )
-}
 
-variable "vpc_tags" {
+    igw_final_tags = merge(
 
-     type = map
-     default = {}
+        local.common_tags,
+        {
+            Name = "${var.project}-${var.environment}"
+        },
+        var.igw_tags
+    )
+    az_names = slice(data.aws_availability_zones.available.names,0,2)
 }
+    
