@@ -1,7 +1,7 @@
 resource "aws_instance" "main" {
 
          ami = var.ami
-         instance_type = var.env = "dev" ? "t3.micro" : "t3.large"
+         instance_type = var.env == "dev" ? "t3.micro" : "t3.large"
          vpc_security_group_ids = [aws_security_group.allow_tls.id]
         
     tags = var.tags
