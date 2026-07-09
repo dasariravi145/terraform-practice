@@ -2,7 +2,7 @@ resource "aws_instance" "main" {
 
          ami = var.ami
          instance_type = var.instance_type
-         vpc_security_group_ids = var.vpc_security_group_ids
+         vpc_security_group_ids = [aws_security_group.allow_tls.id]
         
     tags = var.tags
 }
@@ -10,7 +10,7 @@ resource "aws_instance" "main" {
 resource "aws_security_group" "allow_tls" {
 
           name        = var.sg_name
-          description = var.description
+          description = var.sg_description
 
       egress {
             from_port        = var.from_port

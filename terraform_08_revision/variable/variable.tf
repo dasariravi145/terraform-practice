@@ -10,12 +10,6 @@ variable "instance_type" {
       default = "t3.micro"
 }
 
-variable "vpc_security_group_ids" {
-
-       type = list(string)
-       default = "[aws_security_group.allow_tls.id]"
-}
-
 variable "tags" {
 
         type = map(string)
@@ -24,6 +18,8 @@ variable "tags" {
 
               Name = "terraform"
               Project = "roboshop"
+              Terraform = "true"
+              Environment = "dev"
         }
 }
 
@@ -66,10 +62,13 @@ variable "ipv6_cidr_blocks" {
 
 variable "sg_tags" {
 
-       trype = map
+       type = map
 
        default = {
 
-          Name = "terraform"
+              Name = "terraform"
+              Project = "roboshop"
+              Terraform = "true"
+              Environment = "dev"
        }
 }
