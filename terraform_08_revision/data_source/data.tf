@@ -17,3 +17,8 @@ data "aws_ami" "example" {
     values = ["hvm"]
   }
 }
+
+
+data "aws_instance" "instaces" {
+  instance_id = "i-012cadc42cf12c2a6"
+}

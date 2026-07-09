@@ -7,6 +7,7 @@ variable "instances" {
             "user" = "t3.small"
             "payment" = "t3.medium"
             "rabbitmq" = "t3.large"
+            "frontend" = "t3.micro"
       }
 }
 
