@@ -10,3 +10,13 @@ variable "instances" {
       }
 }
 
+
+variable "zone_id" {
+
+    default = "Z05454352LP47ZQWSG7WJ"
+}
+
+variable "domian_name" {
+
+      default = "dsecops88.online"
+}
