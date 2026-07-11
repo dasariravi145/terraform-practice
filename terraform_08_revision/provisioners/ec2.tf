@@ -11,8 +11,48 @@ resource "aws_instance" "main" {
     }
 
      provisioner "local-exec" {
-           command = "echo 'Server deployed at ${self.public_ip}' >> public_ips.txt"
+           command = "echo '${self.public_ip}' >> inventry.in"
     }
+
+    provisioner "local-exec" {
+           command = "echo 'script 1'"
+    }
+
+    provisioner "local-exec" {
+           when = destroy
+           command = "echo 'deleting the instance'"
+    }
+    
+    provisioner "local-exec" {
+           when = destroy
+           command = "echo > inventry.in"
+    }
+
+    connection {
+        type     = "ssh"
+        user     = "ec2-user"
+        password = "DevOps321"
+        host     = self.public_ip
+   }
+
+
+     provisioner "remote-exec"{
+
+          inline = [
+                "sudo dnf  install nginx -y",
+                "sudo systemctl start nginx"
+        ]
+     }
+    
+    provisioner "remote-exec"{
+          inline = [
+                "sudo systemctl stop nginx",
+                "sudo dnf remove  nginx -y"
+        ]
+        when = destroy
+     }
+
+
 }
 
 resource "aws_security_group" "allow_tls" {
