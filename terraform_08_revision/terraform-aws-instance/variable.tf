@@ -1,3 +1,11 @@
+variable "project" {
+    type = string
+}
+
+variable "environment" {
+   type =string
+}
+
 variable "ami_id" {
 
      type = string
@@ -7,4 +15,15 @@ variable "ami_id" {
 variable "instance_type" {
 
     default = "t3.micro"
+}
+
+variable "sg_ids" {
+
+     type = list(string)
+
+}
+
+variable "tags" {
+    type = map
+     default = {}
 }
